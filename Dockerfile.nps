@@ -1,4 +1,4 @@
-FROM golang:1.14 as builder
+FROM golang:1.13.8 as builder
 ARG GOPROXY=direct
 WORKDIR /go/src/ehang.io/nps
 COPY . .
@@ -9,6 +9,5 @@ FROM scratch
 COPY --from=builder /go/src/ehang.io/nps/nps /
 COPY --from=builder /go/src/ehang.io/nps/conf /conf
 COPY --from=builder /go/src/ehang.io/nps/web /web
-#RUN chmod +x /nps
 VOLUME /conf
-ENTRYPOINT ["/nps"]
+CMD ["/nps"]
