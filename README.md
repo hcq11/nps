@@ -34,7 +34,7 @@ NPS is a lightweight, high-performance, powerful **intranet penetration** proxy 
 docker run -d --name nps --net=host hcq11/nps-server:latest
 
 - client    
-docker run -d --name npc -e NPC_SERVER_ADDR=127.0.0.1:8024 -e NPC_SERVER_VKEY=123fdafa -e TYPE=tcp hcq11/npc-cli:latest
+docker run -d --name npc -e NPC_SERVER_ADDR=127.0.0.1:8024 -e NPC_SERVER_VKEY=123fdafa -e TYPE=tcp hcq11/nps-cli:latest
 
 ### note:
 - Replace NPC_SERVER_ADDR ip:port with NPS ServerIP:port,the default port is 8024.  
