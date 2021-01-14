@@ -10,7 +10,7 @@
 NPS is a lightweight, high-performance, powerful **intranet penetration** proxy server, with a powerful web management terminal.
 
 
-![image](https://github.com/ehang-io/nps/blob/master/image/web.png?raw=true)
+![image](https://github.com/ehang-io/nps/blob/master/image/web.png?raw=false)
 
 ## Feature
 
@@ -28,23 +28,19 @@ NPS is a lightweight, high-performance, powerful **intranet penetration** proxy 
 
 ## Quick start
 
-### Installation
+### Installation && Run
 
-> [releases](https://github.com/ehang-io/nps/releases)
+- server  
+docker run -d --name nps --net=host hcq11/nps-server:latest
 
-Download the corresponding system version, the server and client are separate.
+- client    
+docker run -d --name npc -e NPC_SERVER_ADDR=127.0.0.1:8024 -e NPC_SERVER_VKEY=123fdafa -e TYPE=tcp hcq11/npc-cli:latest
 
-### Server start
+### note:
+- Replace NPC_SERVER_ADDR ip:port with NPS ServerIP:port,the default port is 8024.  
+- Replace NPC_SERVER_VKEY with web management from client startup command.
 
-After downloading the server compressed package, unzip it, and then enter the unzipped folder.
-
-- execute installation command
-
-For linux、darwin ```sudo ./nps install```
-
-For windows, run cmd as administrator and enter the installation directory ```nps.exe install```
-
-- default ports
+### default ports
 
 The default configuration file of nps use 80，443，8080，8024 ports
 
@@ -54,16 +50,6 @@ The default configuration file of nps use 80，443，8080，8024 ports
 
 8024 for net bridge port, to communicate between server and client
 
-- start up
-
-For linux、darwin ```sudo nps start```
-
-For windows, run cmd as administrator and enter the program directory ```nps.exe start```
-
-```After installation, the windows configuration file is located at C:\Program Files\nps, linux or darwin is located at /etc/nps```
-
-**If you don't find it started successfully, you can check the log (Windows log files are located in the current running directory, linux and darwin are located in /var/log/nps.log).**
-
 - Access server IP:web service port (default is 8080).
 - Login with username and password (default is admin/123, must be modified when officially used).
 - Create a client.
@@ -71,9 +57,6 @@ For windows, run cmd as administrator and enter the program directory ```nps.exe
 ### Client connection
 - Click the + sign in front of the client in web management and copy the startup command.
 - Execute the startup command, Linux can be executed directly, Windows will replace ./npc with npc.exe and execute it with cmd.
-
-
-If you need to register to the system service, you can check [Register to the system service](https://ehang-io.github.io/nps/#/use?id=注册到系统服务)
 
 ### Configuration
 - After the client connects, configure the corresponding penetration service in the web.
